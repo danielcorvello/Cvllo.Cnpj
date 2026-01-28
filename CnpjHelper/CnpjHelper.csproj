@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    
+    <!-- Informações do Pacote NuGet -->
+    <PackageId>Cvllo.CnpjHelper</PackageId>
+    <Version>0.0.q</Version>
+    <Authors>Daniel Corvello</Authors>
+    <Company>Cvllo</Company>
+    <Product>CnpjHelper</Product>
+    <Description>Biblioteca .NET para validação, geração e formatação de CNPJs alfanuméricos brasileiros, seguindo o padrão da Receita Federal.</Description>
+    <PackageTags>cnpj;brasil;validacao;geracao;receita-federal;alfanumerico</PackageTags>
+    <PackageProjectUrl>https://github.com/danielcorvello/Cvllo.CnpjHelper</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/danielcorvello/Cvllo.CnpjHelper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Copyright>Copyright (c) 2026 Daniel Corvello</Copyright>
+    <PackageReleaseNotes>
+      v1.0.0:
+      - Validação de CNPJs alfanuméricos
+      - Geração de CNPJs (matriz e filial)
+      - Formatação e remoção de formatação
+      - Geração de filiais a partir de matriz
+    </PackageReleaseNotes>
+    
+    <!-- Configurações adicionais -->
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <!-- Incluir README no pacote -->
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <!-- Descomentar linha abaixo se tiver um ícone -->
+    <!-- <None Include="icon.png" Pack="true" PackagePath="\" /> -->
+  </ItemGroup>
+
+</Project>
+
