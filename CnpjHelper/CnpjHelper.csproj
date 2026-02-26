@@ -6,7 +6,7 @@
     
     <!-- Informações do Pacote NuGet -->
     <PackageId>Cvllo.CnpjHelper</PackageId>
-    <Version>0.0.q</Version>
+    <Version>0.0.1</Version>
     <Authors>Daniel Corvello</Authors>
     <Company>Cvllo</Company>
     <Product>CnpjHelper</Product>
@@ -20,7 +20,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <Copyright>Copyright (c) 2026 Daniel Corvello</Copyright>
     <PackageReleaseNotes>
-      v1.0.0:
+      v0.0.1:
       - Validação de CNPJs alfanuméricos
       - Geração de CNPJs (matriz e filial)
       - Formatação e remoção de formatação
@@ -32,6 +32,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <!-- Incluir README no pacote -->

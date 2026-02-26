@@ -20,10 +20,10 @@ namespace CnpjHelper
         private static readonly Regex FormatacaoRegex = new Regex(@"[.\-/]", RegexOptions.Compiled);
         private static readonly char[] ValoresAlfanumericos = new char[]
         {
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y', 'Z'
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+        'U', 'V', 'W', 'X', 'Y', 'Z'
         };
 
         /// <summary>
@@ -44,15 +44,10 @@ namespace CnpjHelper
 
             cnpj = RemoverFormatacao(cnpj);
 
-            if (cnpj.Length != TamanhoCnpj)
+            if (!CnpjRegex.IsMatch(cnpj))
                 return false;
 
             if (cnpj.All(c => c == cnpj[0]))
-                return false;
-
-            cnpj = cnpj.ToUpperInvariant();
-
-            if (!CnpjRegex.IsMatch(cnpj))
                 return false;
 
             (int d1, int d2) = CalcularDigitos(cnpj);
@@ -122,9 +117,9 @@ namespace CnpjHelper
             if (!Validar(cnpjMatriz))
                 return null;
 
-            cnpjMatriz = RemoverFormatacao(cnpjMatriz).ToUpperInvariant();
+            cnpjMatriz = RemoverFormatacao(cnpjMatriz);
 
-            string baseCnpj = cnpjMatriz.Substring(0, 8);
+            string baseCnpj = cnpjMatriz[..8];
 
             char[] numeroFilial = new char[4];
             for (int i = 0; i < 4; i++)
@@ -153,12 +148,12 @@ namespace CnpjHelper
             if (string.IsNullOrEmpty(cnpj))
                 return null;
 
-            cnpj = RemoverFormatacao(cnpj).ToUpperInvariant();
+            cnpj = RemoverFormatacao(cnpj);
 
             if (cnpj.Length != TamanhoCnpj)
                 return null;
 
-            return $"{cnpj.Substring(0, 2)}.{cnpj.Substring(2, 3)}.{cnpj.Substring(5, 3)}/{cnpj.Substring(8, 4)}-{cnpj.Substring(12, 2)}";
+            return $"{cnpj[..2]}.{cnpj.Substring(2, 3)}.{cnpj.Substring(5, 3)}/{cnpj.Substring(8, 4)}-{cnpj.Substring(12, 2)}";
         }
 
         /// <summary>
@@ -176,7 +171,7 @@ namespace CnpjHelper
             if (string.IsNullOrEmpty(cnpj))
                 return cnpj;
 
-            return FormatacaoRegex.Replace(cnpj, "");
+            return FormatacaoRegex.Replace(cnpj, "").ToUpperInvariant();
         }
 
         private static (int digito1, int digito2) CalcularDigitos(string cnpjBase)
@@ -213,6 +208,3 @@ namespace CnpjHelper
         }
     }
 }
-
-
-
